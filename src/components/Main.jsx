@@ -4,16 +4,30 @@ import movies from '../../data/movies.js'
 
 export default function Main() {
 
+    const [moviesList, setMoviesList] = useState(movies)
     const [genreSelected, setGenreSelected] = useState('')
     const [titleSelected, setTitleSelected] = useState('')
     const [filteredMovies, setFilteredMovies] = useState(movies)
     const [addMovie, setAddMovie] = useState('')
+    
+    function handleAddMovie(e) {
+        e.preventDefault()
+
+        const newMovie = {
+            id: moviesList.length + 1,
+            title: addMovie,
+            genre: ''
+        }
+        
+        setMoviesList([...movies, newMovie])
+        setAddMovie('')
+    }
 
     useEffect(() => {
-        const filteredByGenre = genreSelected === '' ? movies : movies.filter(movie => movie.genre === genreSelected)
+        const filteredByGenre = genreSelected === '' ? moviesList : movies.filter(movie => movie.genre === genreSelected)
         const filteredByTitle = titleSelected === '' ? filteredByGenre : filteredByGenre.filter(movie => movie.title.toLowerCase().includes(titleSelected.toLowerCase()))
         setFilteredMovies(filteredByTitle)
-    }, [genreSelected, titleSelected])
+    }, [moviesList, genreSelected, titleSelected])
 
     return (
         <main id="main" className='text-center'>
@@ -38,8 +52,8 @@ export default function Main() {
                 ))}
             </ul>
 
-            <form>
-                <input type="text" placeholder='Aggiungi nuovo film' className='m-1' />
+            <form onSubmit={handleAddMovie}>
+                <input type="text" placeholder='Aggiungi nuovo film' className='m-1' value={addMovie} onChange={(e) => setAddMovie(e.target.value)} />
                 <button type="submit">Invia</button>
             </form>
         </main>
