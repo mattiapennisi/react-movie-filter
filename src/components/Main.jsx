@@ -19,12 +19,12 @@ export default function Main() {
             genre: ''
         }
         
-        setMoviesList([...movies, newMovie])
+        setMoviesList([...moviesList, newMovie])
         setAddMovie('')
     }
 
     useEffect(() => {
-        const filteredByGenre = genreSelected === '' ? moviesList : movies.filter(movie => movie.genre === genreSelected)
+        const filteredByGenre = genreSelected === '' ? moviesList : moviesList.filter(movie => movie.genre === genreSelected)
         const filteredByTitle = titleSelected === '' ? filteredByGenre : filteredByGenre.filter(movie => movie.title.toLowerCase().includes(titleSelected.toLowerCase()))
         setFilteredMovies(filteredByTitle)
     }, [moviesList, genreSelected, titleSelected])
