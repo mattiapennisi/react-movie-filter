@@ -36,6 +36,18 @@
     font-weight: 500;
 }
 
+.border-solid {
+    border: 1px solid #000;
+}
+
+.border-dashed {
+    border: 1px dashed #000;
+}
+
+.border-dotted {
+    border: 1px dotted #000;
+}
+
 .rounded-1 {
     border-radius: 0.2rem;
 }
