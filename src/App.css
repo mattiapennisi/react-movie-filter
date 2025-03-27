@@ -1,0 +1,22 @@
+/* Common */
+
+body {
+    
+    /* Header */
+
+    #header {
+        width: 100%;
+    }
+
+    /* Main */
+
+    #main {
+        width: 100%;
+    }
+
+    /* Footer */
+
+    #footer {
+        width: 100%;
+    }
+}
