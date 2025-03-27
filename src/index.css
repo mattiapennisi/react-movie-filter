@@ -11,6 +11,5 @@
 .debug {
   * {
       border: 1px dotted black;
-      min-height: 50px;
   }
 }
