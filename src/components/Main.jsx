@@ -5,22 +5,21 @@ import movies from '../../data/movies.js'
 export default function Main() {
 
     const [genreSelected, setGenreSelected] = useState('')
+    const [filteredMovies, setFilteredMovies] = useState('movies')
+
+    useEffect(() => {
+        const filtered = genreSelected === '' ? movies : movies.filter(movie => movie.genre === genreSelected)
+        setFilteredMovies(filtered)
+    }, [genreSelected])
 
     return (
         <main id="main" className='text-center'>
             <h1 className='m-1 fw-bold'>Movies Database</h1>
 
             <ul>
-                {
-                    genreSelected === ''
-                        ? movies.map(movie => (
-                            <li key={movie.id} className='m-1'>{movie.title}</li>
-                        ))
-                        : movies.filter(movie => movie.genre === genreSelected)
-                            .map(movie => (
-                                <li key={movie.id} className='m-1'>{movie.title}</li>
-                            ))
-                }
+                {filteredMovies.map(movie => (
+                    <li key={movie.id} className='m-1'>{movie.title}</li>
+                ))}
             </ul>
 
             <form>
