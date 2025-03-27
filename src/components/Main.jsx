@@ -30,10 +30,10 @@ export default function Main() {
     }, [moviesList, genreSelected, titleSelected])
 
     return (
-        <main className="container py-4 m-5 border-3">
+        <main className="container py-4 border-3">
             <h1 className="text-center fw-bold h2 mb-4 ">Movies Database</h1>
 
-            <form className="mb-4">
+            <form className="mb-4 p-3 bg-secondary-subtle rounded-2 border-black">
                 <h2 className="h4 mb-3">Filtri ricerca</h2>
                 <div className="row g-3">
                     <div className="col-md-6">
@@ -63,16 +63,17 @@ export default function Main() {
 
             <ul className="list-group mb-4">
                 {filteredMovies.map(movie => (
-                    <li key={movie.id} className="list-group-item">{movie.title}</li>
+                    <li key={movie.id} className="list-group-item bg-secondary-subtle border-black">{movie.title}</li>
                 ))}
             </ul>
 
-            <form onSubmit={handleAddMovie} className="row g-3">
+            <form onSubmit={handleAddMovie} className="row g-3 bg-secondary-subtle rounded-2 border-black p-3 mt-2">
+                <h2 className='h4'>Aggiungi film</h2>
                 <div className="col-md-8">
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Aggiungi nuovo film"
+                        placeholder="Inserisci il titolo del film da aggiungere"
                         value={addMovie}
                         onChange={(e) => setAddMovie(e.target.value)}
                     />
