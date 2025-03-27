@@ -5,7 +5,8 @@ import movies from '../../data/movies.js'
 export default function Main() {
 
     const [genreSelected, setGenreSelected] = useState('')
-    const [filteredMovies, setFilteredMovies] = useState('movies')
+    const [filteredMovies, setFilteredMovies] = useState(movies)
+    const [addMovie, setAddMovie] = useState('')
 
     useEffect(() => {
         const filtered = genreSelected === '' ? movies : movies.filter(movie => movie.genre === genreSelected)
@@ -30,6 +31,14 @@ export default function Main() {
                     <option value="Thriller">Thriller</option>
                     <option value="Fantascienza">Fantascienza</option>
                 </select>
+
+                <input type="text" placeholder='Cerca per titolo' className='m-1' />
+                <button type="submit">Invia</button>
+            </form>
+
+            <form>
+                <input type="text" placeholder='Aggiungi nuovo film' className='m-1' />
+                <button type="submit">Invia</button>
             </form>
         </main>
     )
